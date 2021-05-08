@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <div th:replace="fragments/bootstrapFragment :: head" th:remove="tag"></div>
+    <style>
+        a, a:hover, a:focus, a:active {
+      text-decoration: none;
+      color: inherit;
+ }
+    </style>
+</head>
+<body>
+<div class="container container-full-height fixed-nav "  id="fixed-nav">
+    <div th:replace="fragments/common :: navbar" th:remove="tag"></div>
+</div>
+<div class="container mt-6" >
+    <div class="row ">
+
+
+        <div class="col-md-4 mt-3"  th:each="post : ${user}">
+
+            <a class="hideLink" th:href="@{/RaisedFundDetail/}+ ${post.id}" style="text-decoration:none">
+
+                <div class="card w-100 h-100 " >
+
+                    <div th:if="${post.getImages().get(0)}">
+                             <img class="card-img-top img-size" th:src="@{|allImages/${post.getImages().get(0)}|}" alt="Card image" style="width:100%">
+                    </div>
+<!--                    <div >-->
+<!--                        <img class="card-img-top img-size" th:src="@{images/default.jpg}" alt="Card image" style="width:100%">-->
+<!--                    </div>-->
+                    <div class="card-body">
+                        <h4 class="card-title text-success" th:text="${post.getTopic()}"></h4>
+                        <p class="card-text" th:text="${#strings.abbreviate(post.getDescription(),100)}"></p>
+
+                        <div class="progress progress-bar-height">
+                            <div class="progress-bar bg-success" th:style="@{| width: ${ ( amountArray[post.getId()]/ (post.getRequiredAmount()+0.00) ) * 100.00 }%; |}" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+
+                        <div class="Raised mt-3 ">
+                            <b> <span th:text="${amountArray[post.getId()]}" class="text-success"></span><span class="text-success">$</span> Raised out of <span class="text-success" th:text="@{|${post.getRequiredAmount()}$|}"></span></b>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </a>
+        </div>
+    </div>
+</div>
+<footer>
+<div th:replace="fragments/common :: footer" th:remove="tag"></div>
+</footer>
+</body>
+<div th:replace="fragments/bootstrapFragment :: BSfragmentScript" th:remove="tag"></div>
+</html>

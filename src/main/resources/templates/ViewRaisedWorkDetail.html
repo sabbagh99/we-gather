@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <div th:replace="fragments/bootstrapFragment :: head" th:remove="tag"></div>
+
+    <link th:rel="stylesheet" th:href="@{/css/raisedWorkView.css}"/>
+
+</head>
+<body>
+
+<div class="container  rounded-bottom fixed-nav " id="fixed-nav">
+    <div th:replace="fragments/common :: navbar" th:remove="tag"></div>
+</div>
+<div class="container-fluid bg-warm">
+    <div class="container mt-6 ">
+
+
+        <div class="row ">
+            <div class="col-md-12">
+                <h2 class="pt-3 pb-1 col-12" th:text="${raisedWorkProject.topic}">About</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 ">
+                <div class="row">
+                    <div class="col-md-12 ">
+                        <div class="px-4 pt-0 pb-4 cover">
+                            <img class="profile-img image-size" th:src="@{|allImages/${raisedWorkProject.images.get(0)}|}" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row ">
+                    <div class="col-md-12 border border-left-0 border-right-0  p-2">
+                        <span>profile</span>
+                        <span class="text-secondary"> anas is organizing this fundraiser</span>
+                    </div>
+                </div>
+
+                <div class="row pt-2 ">
+                    <div class="col-md-12 border border-left-0 border-right-0 border-top-0  p-2">
+
+                        <p class="text-default">Created At: <i class="font-italic font-weight-lighter"
+                                                               th:text="${raisedWorkProject.startFrom}"></i></p>
+                        <p class="text-default">Ends At: <i class="font-italic font-weight-lighter"
+                                                            th:text="${raisedWorkProject.endAt}"> </i></p>
+
+
+                    </div>
+                </div>
+
+                <div class="row ">
+                    <div class="col-md-12 border border-left-0 border-right-0 border-top-0 p-2">
+                        <p class="font-italic mb-0" th:text="${raisedWorkProject.description}"></p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-card col-4">
+
+
+                <div class="card card-container">
+
+
+                    <div class="card-body">
+                        <div class="card-title">
+                            <b>
+                                <span class="text-success"></span><span class="text-success">500$</span>
+
+                                <span class="text-default"> Raised out of  <span
+                                        class="text-success">1000$</span> </span>
+                            </b>
+                        </div>
+
+                        <div class="progress progress-bar-height">
+                            <div class="progress-bar bg-success" th:style="@{| width: 70% |}" role="progressbar"
+                                 aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+
+                        <form action="/addContributors" method="post">
+
+                            <input type="hidden" name="workedRaised_id" th:value="${raisedWorkProject.id}">
+
+                            <input type="hidden" name="userWorkRaiser_id" th:value="${userId}">
+
+                            <input type="hidden" name="status" value="1">
+<!--                            th:if="${userId==contribute.getId() ||findContribute==null}"-->
+                            <button th:if="${isAllow}" type="submit" class="donate" data-toggle="modal" data-target="#addDonation">
+                                Contributor
+                            </button>
+                        </form>
+                        <div th:each="contribute:${contributes}">
+                            <img src="https://cdn.iconscout.com/icon/free/png-256/user-1648810-1401302.png" width=10% alt="">
+                            <p th:text="${contribute.contributorName}+' Has contribute'"></p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+<div class="container mt-5">
+    <div class=" row">
+        <div class="col-md-8">
+            <div class="d-flex flex-column comment-section">
+                <div class="bg-white p-2">
+                    <h3> Comments</h3>
+                    <div class="border border-left-0 border-right-0 p-3"  th:each="comment:${AllComment}">
+                        <div th:if="${comment.getCommentTypeId()}==1">
+                            <div class="d-flex flex-row user-info"><img class="rounded-circle"
+                                                                        src="https://i.imgur.com/RpzrMR2.jpg" width="40">
+                                <div class="d-flex flex-column justify-content-start ml-2"><span
+                                        class="d-block font-weight-bold name" th:text="${comment.getCommenterName()}"  ></span><span
+                                        class="date text-black-50"  th:text="${comment.getTimeStamp()}"></span></div>
+                            </div>
+
+                            <p class="p-2" th:text="${comment.body}"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-light p-2"  sec:authorize="isAuthenticated()">
+                    <div class="d-flex flex-row align-items-start">
+                        <h3> Add A Comment</h3>
+                    </div>
+                    <div class="mt-2 text-right">
+                        <form class="d-flex flex-row align-items-start" action="/addComment" method="post">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <input class="form-control ml-1 shadow-none textarea" type="text" name="body">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-3">
+                                    <button class="btn btn-primary  shadow-none" type="submit">Post comment</button>
+                                </div>
+                            </div>
+
+                            <input type="hidden" name="workId" th:value="${raisedWorkProject.id}">
+                            <input type="hidden" name="status" value="1">
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div th:replace="fragments/common :: footer" th:remove="tag"></div>
+
+</body>
+<div th:replace="fragments/bootstrapFragment :: BSfragmentScript" th:remove="tag"></div>
+
+</html>

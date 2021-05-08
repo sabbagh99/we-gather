@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #map {
+            height: 500px;
+            width: 500px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="map"></div>
+
+    <form name="location" action="/postLocation" method="post">
+        <input type="text" name="longitude" id="longitude" value="">
+        <input type="text" name="latitude" id="latitude" value="">
+        <!-- style="display: none;" -->
+        <label for="description">Description:</label>
+        <textarea name="description" id="description"></textarea>
+
+        <button onclick="myFunction()"  class="btn btn-primary">Submit</button>
+
+
+
+    </form>
+
+</body>
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_NC3RTlIGZ7XHIO79VdPXs_MPyTcFUbg&callback=initMap"></script>
+<!-- <script src="https://google.com/maps/embed?pb=!1m14!1m8!1m3!1d11880.492291371422!2d12.4922309!3d41.8902102!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x28f1c82e908503c4!2sColosseo!5e0!3m2!1sit!2sit!4v1524815927977"></script> -->
+
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
+<script src="js/location.js"></script>
+
+</html>

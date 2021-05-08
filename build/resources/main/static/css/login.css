@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css?family=Numans');
+
+.fixed-nav{
+position: fixed;
+    z-index: 100;
+    top: 0;
+    right: 0;
+    left: 0;
+}
+
+
+html,body{
+background-image: url('/images/plant.jpg');
+background-size: cover;
+background-repeat: no-repeat;
+height: 100%;
+font-family: 'Numans', sans-serif;
+}
+
+
+
+.container-full-height{
+height: 100%;
+align-content: center;
+}
+
+.login_card{
+height: 370px;
+margin-top: auto;
+margin-bottom: auto;
+width: 400px;
+background-color: rgba(0,0,0,0.5) !important;
+}
+
+
+
+
+.card-header h3{
+color: white;
+}
+
+
+
+
+
+
+.remember{
+color: white;
+}
+
+.remember input
+{
+width: 20px;
+height: 20px;
+margin-left: 15px;
+margin-right: 5px;
+}
+
+
+
+.links{
+color: white;
+}
+
+.links a{
+margin-left: 4px;
+}

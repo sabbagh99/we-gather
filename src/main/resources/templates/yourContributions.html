@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <div th:replace="fragments/bootstrapFragment :: head" th:remove="tag"></div>
+
+</head>
+<body>
+
+<div class="container container-full-height fixed-nav "  id="fixed-nav">
+    <div th:replace="fragments/common :: navbar" th:remove="tag"></div>
+</div>
+<div class="container mt-6" >
+    <div class="row ">
+
+
+        <div class="col-md-4 mt-3"  th:each="val : ${countArray}">
+
+            <div class="card-body">
+                <h4>Topic :
+                <span class="card-title text-success" th:text="${arrayTopic[val]}"></span>
+                    </h4>
+                <p>Description :
+                <span class="card-text" th:text="${arrayDescription[val]}"></span>
+                </p>
+                <h4>Contribution :
+                    <span class="card-title text-success" th:text="${amountArray[val]}"></span>
+                </h4>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+<footer>
+    <div th:replace="fragments/common :: footer" th:remove="tag"></div>
+</footer>
+</body>
+<div th:replace="fragments/bootstrapFragment :: BSfragmentScript" th:remove="tag"></div>
+</html>

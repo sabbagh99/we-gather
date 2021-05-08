@@ -1,0 +1,124 @@
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <div th:replace="fragments/bootstrapFragment :: head" th:remove="tag"></div>
+
+    <link th:rel="stylesheet" th:href="@{/css/signup.css}"/>
+</head>
+<body>
+
+<div class="container  fixed-nav "  id="fixed-nav">
+    <div th:replace="fragments/common :: navbar" th:remove="tag"></div>
+</div>
+
+<div class="container mt-6">
+    <div class=" row ">
+        <div class=" d-flex justify-content-center col-md-12">
+            <h1 class="text-white">Sign Up </h1>
+        </div>
+
+    </div>
+    <div class=" d-flex justify-content-center  row p-3">
+        <form action="/signup" method="post" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="username">User Name</label>
+                        <input type="name" class="form-control" id="username" name="username" placeholder="User Name" required>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="email">E-mail </label>
+                        <input type="email" class="form-control" id="email" name="email" aria-describedby="E-mail"
+                               placeholder="E-mail" required>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" name="password"
+                               placeholder="Password" required>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" required>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="middleName">Middle Name</label>
+                        <input type="text" class="form-control" id="middleName" name="middleName"
+                               placeholder="Middle Name" required>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name" required>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="nationalNumber">National Number</label>
+                        <input type="text" class="form-control" id="nationalNumber" name="nationalNumber"
+                               placeholder="National Number" required>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="nationalCardNumber">National Card Number</label>
+                        <input type="text" class="form-control" id="nationalCardNumber" name="nationalCardNumber"
+                               placeholder="National Card Number" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="passportNumber">Passport Number</label>
+                        <input type="text" class="form-control" id="passportNumber" name="passportNumber"
+                               placeholder="Passport Number">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="nameWrittenInPassport">Name Written In Passport</label>
+                        <input type="text" class="form-control" id="nameWrittenInPassport"
+                               name="nameWrittenInPassport"
+                               placeholder="Name Written In Passport">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="profilePictures">Profile Picture</label>
+                        <input type="file" class="form-control" id="profilePictures" name="profilePictures">
+                    </div>
+
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+        </form>
+
+    </div>
+
+</div>
+
+
+<div th:replace="fragments/common :: footer" th:remove="tag"></div>
+
+<div th:replace="fragments/bootstrapFragment :: BSfragmentScript" th:remove="tag"></div>
+
+</body>
+</html>

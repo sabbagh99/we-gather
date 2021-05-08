@@ -1,0 +1,15 @@
+.progress {
+    height: 10px;
+}
+.Raised{
+    margin-left: 20px;
+    }
+    .card{
+        height: 400px;
+    }
+
+    
+    a, a:hover, a:focus, a:active {
+        text-decoration: none;
+        color: inherit;
+   }

@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <div th:replace="fragments/bootstrapFragment :: head" th:remove="tag"></div>
+</head>
+<style>
+    #map {
+        height: 500px;
+        width: 500px;
+    }
+
+</style>
+
+<body>
+<div class="container">
+    <div th:replace="fragments/common :: navbar" th:remove="tag"></div>
+</div>
+<main>
+    <div class="container">
+
+        <h2>Raise New Charity Work </h2>
+
+        <form action="/AddWork" method="post" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="startFrom">Start From:</label>
+                        <input type="datetime-local" class="form-control" id="startFrom" name="startFrom">
+                    </div>
+                    <div class="form-group">
+                        <label for="endAt">End At:</label>
+                        <input type="datetime-local" class="form-control" id="endAt" name="endAt">
+                    </div>
+                    <div class="form-group">
+                        <label for="image">Image:</label>
+                        <input type="file" class="form-control" id="image"
+                               placeholder="Enter the link of your Image" name="image">
+                    </div>
+                    <div class="form-group">
+                        <label for="topic">Topic:</label>
+                        <input type="text" class="form-control" id="topic" placeholder="Enter a Topic" name="topic">
+                    </div>
+                    <div class="form-group">
+                        <label for="requiredContAmount">Required Contriubuters:</label>
+                        <input type="number" class="form-control" id="requiredContAmount"
+                               placeholder="Add the Required Number of Contriubuters" name="requiredContAmount">
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description:</label>
+                        <textarea name="description" class="form-control" id="description" cols="30" rows="10"
+                                  placeholder="Enter a an enough description about the work the you will publish"></textarea>
+                    </div>
+
+                </div>
+                <div class="col">
+                    <h5 class="display-5">Select your location on the Map</h5>
+                    <div style="height: 400px;" id="map"></div>
+
+                    <input style="display: none;" type="text" name="longitude" id="longitude" value="">
+                    <input style="display: none;" type="text" name="latitude" id="latitude" value="">
+
+                    <div class="form-group">
+                        <label for="locationDescription">Description:</label>
+                        <textarea name="locationDescription" class="form-control" id="locationDescription" cols="20"
+                                  rows="2"
+                                  placeholder="Enter a an enough description about your location"></textarea>
+                    </div>
+                    <!--                        <div class="form-check">-->
+                    <!--                            <input type="checkbox" class="form-check-input" id="governate">-->
+                    <!--                            <label class="form-check-label" for="governate">Governate</label>-->
+                    <!--                        </div>-->
+                    <!--                        <div class="form-check">-->
+                    <!--                            <input type="checkbox" class="form-check-input" id="district">-->
+                    <!--                            <label class="form-check-label" for="district">District</label>-->
+                    <!--                        </div>-->
+                    <!--                        <div class="form-check">-->
+                    <!--                            <input type="checkbox" class="form-check-input" id="suburb">-->
+                    <!--                            <label class="form-check-label" for="suburb">Suburb</label>-->
+                    <!--                        </div>-->
+
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <button onclick="myFunction()" type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+</main>
+
+<footer>
+    <div th:replace="fragments/common :: footer" th:remove="tag"></div>
+</footer>
+</body>
+<div th:replace="fragments/bootstrapFragment :: BSfragmentScript" th:remove="tag"></div>
+<script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_NC3RTlIGZ7XHIO79VdPXs_MPyTcFUbg&callback=initMap"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        crossorigin="anonymous"></script>
+<script src="js/location.js"></script>
+
+</html>

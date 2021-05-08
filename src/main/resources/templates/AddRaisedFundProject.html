@@ -1,0 +1,88 @@
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <div th:replace="fragments/bootstrapFragment :: head" th:remove="tag"></div>
+    <link th:rel="stylesheet" th:href="@{/css/addfund.css}"/>
+
+</head>
+<body>
+
+<div class="container">
+    <div th:replace="fragments/common :: navbar" th:remove="tag"></div>
+    <div class=" row ">
+        <div class=" d-flex justify-content-center col-md-12">
+            <h1 class="text-white">Raise New Fund </h1>
+        </div>
+
+    </div>
+    <div class=" d-flex justify-content-center  row p-3">
+
+        <form action="/AddRaise" method="post" enctype="multipart/form-data" >
+
+            <div class="row">
+                <div class="col-md-12 mb-3">
+                    <label for="topic">Topic:</label>
+                    <input type="text" class="form-control" name="topic" id="topic" required>
+                    <div class="invalid-feedback">
+                        Please provide a valid image.
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <label for="validationCustom03"> Description:</label>
+                    <textarea class="form-control" id="validationCustom03" name="Description" required>
+                      </textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <label for="RequiredAmount">Required Amount:</label>
+                    <input type="number" class="form-control" id="RequiredAmount" name="RequiredAmount" required>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="startFrom">Start From:</label>
+                    <input type="date" class="form-control" id="startFrom" name="StartFrom" required>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="EndAt">End At:</label>
+                    <input type="date" class="form-control" id="EndAt" name="EndAt" required>
+                </div>
+            </div>
+            <input type="hidden" class="form-control" aria-describedby="inputGroupPrepend" name="userId"
+                   th:value="${#authentication.principal.id}" required>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <label for="validationCustom04">Image:</label>
+                    <input type="file" class="form-control" id="validationCustom04" name="image" required>
+                </div>
+            </div>
+
+
+
+            <br>
+            <div class="form-group">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                    <label class="form-check-label" for="invalidCheck">
+                        Agree to terms and conditions
+                    </label>
+                </div>
+            </div>
+            <button class="btn btn-primary" type="submit">Submit form</button>
+        </form>
+    </div>
+</div>
+
+<div th:replace="fragments/common :: footer" th:remove="tag"></div>
+
+</body>
+<div th:replace="fragments/bootstrapFragment :: BSfragmentScript" th:remove="tag"></div>
+
+</html>
